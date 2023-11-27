@@ -16,7 +16,6 @@ int _printf(const char *format, ...)
 	va_list ptr;
 	int i = 0, size = 0;
 	char *str;
-	char s;
 
 	va_start(ptr, format);
 	while (format[i])
@@ -30,7 +29,7 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] == 'c')
 			{
-				_putchar(va_arg(ptr, char));
+				_putchar(va_arg(ptr, int));
 				size++;
 				i++;
 			}
