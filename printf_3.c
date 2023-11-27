@@ -44,8 +44,11 @@ int _printf(const char *format, ...)
 					size += write(1, str, strlen(str));
 				i++;
 			}
-			else if (format[i + 1])
-				size += write(1, format + i, 1);
+			else if (format[i + 1] && format[i + 1] == '%')
+			{
+				size += write(1, "%", 1);
+				i++;
+			}
 		}
 		i++;
 	}
