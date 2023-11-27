@@ -16,7 +16,6 @@ int _printf(const char *format, ...)
 	va_list ptr;
 	int i = 0, size = 0;
 	char *str;
-	char s;
 
 	va_start(ptr, format);
 	if (format == NULL)
@@ -25,15 +24,13 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			_putchar(format[i]);
-			size++;
+			size += write(1, format[i], 1);
 		}
 		else
 		{
 			if (format[i + 1] && format[i + 1] == 'c')
 			{
-				_putchar(va_arg(ptr, char));
-				size++;
+				size += write(1, va_arg(ptr, int), 1);
 				i++;
 			}
 			else if (format[i + 1] && format[i + 1] == 's')
@@ -47,8 +44,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1])
 			{
-				_putchar(format[i]);
-				size++;
+				size += write(1, format[i], 1);
 			}
 		}
 		i++;
