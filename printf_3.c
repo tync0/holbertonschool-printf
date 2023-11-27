@@ -60,6 +60,8 @@ int _printf(const char *format, ...)
 			else if (format[i + 1])
 			{
 				size += write(1, "%", 1);
+				if (format[i + 1] == '%')
+					i++;
 			}
 		}
 		i++;
