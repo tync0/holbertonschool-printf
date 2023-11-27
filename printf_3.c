@@ -57,7 +57,7 @@ int _printf(const char *format, ...)
 				size += print_str(va_arg(ptr, char *));
 				i++;
 			}
-			else if (format[i + 1] && format[i + 1] == '%')
+			else if (format[i + 1])
 			{
 				size += write(1, "%", 1);
 				i++;
