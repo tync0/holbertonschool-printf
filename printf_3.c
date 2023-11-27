@@ -7,7 +7,7 @@
 /**
  * _printf - produces output according to a format
  *
- * @format: var
+ * @format: varrr
  *
  * Return: Always 0.
  */
