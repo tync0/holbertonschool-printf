@@ -31,24 +31,13 @@ int print_str(char *str)
 int _printf(const char *format, ...)
 {
 	va_list ptr;
-<<<<<<< HEAD
 	int i = 0, size = 0;
-	char *str;
 	char s;
-=======
-	int i = 0, size = 0; 
-	int c;
->>>>>>> a4378064b0659a33263b991a275aa11916a0dfbf
 
 	va_start(ptr, format);
 
 	if (format == NULL)
-<<<<<<< HEAD
 		exit(98);
-=======
-		return (size);
-
->>>>>>> a4378064b0659a33263b991a275aa11916a0dfbf
 	while (format[i])
 	{
 		if (format[i] != '%')
@@ -59,13 +48,8 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] && format[i + 1] == 'c')
 			{
-<<<<<<< HEAD
 				s = va_arg(ptr, int);
 				size += write(1, &s, 1);
-=======
-				c = va_arg(ptr, int);
-				size += write(1, &c, 1);
->>>>>>> a4378064b0659a33263b991a275aa11916a0dfbf
 				i++;
 			}
 			else if (format[i + 1] && format[i + 1] == 's')
