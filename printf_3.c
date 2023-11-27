@@ -16,21 +16,23 @@ int _printf(const char *format, ...)
 	va_list ptr;
 	int i = 0, size = 0;
 	char *str;
+	char s;
 
 	va_start(ptr, format);
 	if (format == NULL)
-		return (size);
+		exit(98);
 	while (format[i])
 	{
 		if (format[i] != '%')
 		{
-			size += write(1, format[i], 1);
+			size += write(1, format + i, 1);
 		}
 		else
 		{
 			if (format[i + 1] && format[i + 1] == 'c')
 			{
-				size += write(1, va_arg(ptr, int), 1);
+				s = va_arg(ptr, int);
+				size += write(1, &s, 1);
 				i++;
 			}
 			else if (format[i + 1] && format[i + 1] == 's')
@@ -43,9 +45,7 @@ int _printf(const char *format, ...)
 				i++;
 			}
 			else if (format[i + 1])
-			{
-				size += write(1, format[i], 1);
-			}
+				size += write(1, format + i, 1);
 		}
 		i++;
 	}
