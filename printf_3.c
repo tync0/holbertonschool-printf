@@ -19,6 +19,10 @@ int _printf(const char *format, ...)
 	char s;
 
 	va_start(ptr, format);
+
+	if (!format)
+		return (size);
+
 	while (format[i])
 	{
 		if (format[i] != '%')
@@ -44,5 +48,6 @@ int _printf(const char *format, ...)
 		i++;
 	}
 
+	va_end(ptr);
 	return (size);
 }
