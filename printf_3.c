@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include "main.h"
 #include <string.h>
-
+#include <stdio.h>
 /**
  * print_str - prints string
  * @str: string to be printed
