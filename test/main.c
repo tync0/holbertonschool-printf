@@ -9,10 +9,8 @@
  */
 int main(void)
 {
-	int size;
-	size =  _printf("%");
-	printf("size: %d\n", size);
-	size = printf("%");
-	printf("size: %d\n", size);
+	_printf("Negative:[%d]\n", -762534);
+	    printf("Negative:[%d]\n", -762534);
+
 	return (0);
 }
