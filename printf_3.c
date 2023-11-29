@@ -33,8 +33,7 @@ int _printf(const char *format, ...)
 {
 	va_list ptr;
 	int i = 0, size = 0;
-	char s, s1[80];
-	int x;
+	char s;
 
 	va_start(ptr, format);
 
