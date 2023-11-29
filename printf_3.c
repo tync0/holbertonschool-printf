@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "main.h"
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
+
 /**
  * print_str - prints string
  * @str: string to be printed
@@ -56,14 +57,6 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] && format[i + 1] == 's')
 			{
 				size += print_str(va_arg(ptr, char *));
-				i++;
-			}
-			else if (format[i + 1] && (format[i + 1] == 'd' ||
-						format[i + 1] == 'i'))
-			{
-				x = va_arg(ptr, int);
-				sprintf(s1, "%d", x);
-				size += write(1, s1, strlen(s1));
 				i++;
 			}
 			else if (format[i + 1])
