@@ -16,6 +16,7 @@ int numlen(int num)
 {
 	int i;
 
+	num = num < 0 ? num * -1 : num;
 	for (i = 0; num % 10 > 0; i++)
 		num = num / 10;
 
@@ -38,7 +39,7 @@ int print_str(char *str)
 }
 
 /**
- * num_to_str - converts number to string
+ * num_to_strng - converts number to string
  * @num: num to convert
  *
  * Return: pointer to the string
@@ -51,8 +52,7 @@ char *num_to_string(int num)
 
 	len = numlen(num);
 
-	str = num < 0 ? malloc(sizeof(char) * len + 2) :
-		malloc(sizeof(char) * len + 1);
+	str = malloc(sizeof(char) * (len + 1) + 1);
 
 	if (str)
 	{
