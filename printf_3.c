@@ -4,6 +4,24 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <limits.h>
+
+/**
+ * free_array - frees array
+ * @arr: array or string to free
+ *
+ * Return: nothing
+ */
+
+void free_array(char *arr)
+{
+	int i, length;
+
+	length = strlen(arr);
+
+	for (i = 0; i < length; i++)
+		arr[i] = '\0';
+}
 
 /**
  * numlen - calculates length of number
@@ -19,7 +37,11 @@ int numlen(int num)
 	if (num == 0)
 		return (1);
 
-	num = num < 0 ? num * -1 : num;
+	if (num == INT_MIN)
+		num = num - 1;
+	else
+		num = num < 0 ? num * -1 : num;
+
 	for (i = 0; num > 0; i++)
 		num = num / 10;
 
@@ -54,8 +76,10 @@ char *num_to_string(int num, char *str)
 	int cpNum, len, i, remain;
 
 	len = numlen(num);
-
-	cpNum = num < 0 ? num * -1 : num;
+	if (num == INT_MIN)
+		cpNum = num - 1;
+	else
+		cpNum = num < 0 ? num * -1 : num;
 	len = num < 0 ? len + 1 : len;
 
 	for (i = 0; i < len; i++)
@@ -64,6 +88,10 @@ char *num_to_string(int num, char *str)
 		cpNum = cpNum / 10;
 		str[(len - 1) - i] = '0' + remain;
 	}
+
+	if (num == INT_MIN)
+		str[len - 1] += 1;
+
 	str[0] = num < 0 ? '-' : str[0];
 	return (str);
 
@@ -123,6 +151,7 @@ int _printf(const char *format, ...)
 					i++;
 			}
 		}
+		free_array(str);
 		i++;
 	}
 	va_end(ptr);
