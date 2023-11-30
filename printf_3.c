@@ -3,6 +3,7 @@
 #include "main.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 /**
  * numlen - calculates length of number
