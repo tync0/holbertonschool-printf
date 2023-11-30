@@ -16,8 +16,11 @@ int numlen(int num)
 {
 	int i;
 
+	if (num == 0)
+		return (1);
+
 	num = num < 0 ? num * -1 : num;
-	for (i = 0; num % 10 > 0; i++)
+	for (i = 0; num > 0; i++)
 		num = num / 10;
 
 	return (i);
