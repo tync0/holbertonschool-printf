@@ -1,5 +1,4 @@
 #include <stdarg.h>
-#include <stdlib.h>
 #include <unistd.h>
 #include "main.h"
 #include <stdio.h>
@@ -39,35 +38,31 @@ int print_str(char *str)
 }
 
 /**
- * num_to_strng - converts number to string
+ * num_to_string - converts number to string
  * @num: num to convert
+ * @str: empty array to fill
  *
  * Return: pointer to the string
  */
 
-char *num_to_string(int num)
+char *num_to_string(int num, char *str)
 {
 	int cpNum, len, i, remain;
-	char *str;
 
 	len = numlen(num);
 
-	str = malloc(sizeof(char) * (len + 1) + 1);
+	cpNum = num < 0 ? num * -1 : num;
+	len = num < 0 ? len + 1 : len;
 
-	if (str)
+	for (i = 0; i < len; i++)
 	{
-		cpNum = num < 0 ? num * -1 : num;
-		len = num < 0 ? len + 1 : len;
-
-		for (i = 0; i < len; i++)
-		{
-			remain = cpNum % 10;
-			cpNum = cpNum / 10;
-			str[(len - 1) - i] = '0' + remain;
-		}
-		str[0] = num < 0 ? '-' : str[0];
-		return (str);
+		remain = cpNum % 10;
+		cpNum = cpNum / 10;
+		str[(len - 1) - i] = '0' + remain;
 	}
+	str[0] = num < 0 ? '-' : str[0];
+	return (str);
+
 	return (NULL);
 }
 
@@ -84,7 +79,7 @@ int _printf(const char *format, ...)
 {
 	va_list ptr;
 	int i = 0, size = 0;
-	char s;
+	char s, str[13];
 	int x;
 
 	va_start(ptr, format);
@@ -114,7 +109,7 @@ int _printf(const char *format, ...)
 						format[i + 1] == 'i'))
 			{
 				x = va_arg(ptr, int);
-				size += write(1, num_to_string(x), strlen(num_to_string(x)));
+				size += write(1, num_to_string(x, str), strlen(num_to_string(x, str)));
 				i++;
 			}
 			else if (format[i + 1])
