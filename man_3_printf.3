@@ -1,0 +1,51 @@
+.TH _printf 3
+.SH NAME
+_printf \- custom printf-like function
+.SH SYNOPSIS
+.B #include <stdio.h>
+.br
+.I int _printf(const char *format, ...);
+.SH DESCRIPTION
+The
+.B _printf
+function is a simplified version of the C library printf function. It prints formatted output to the standard output stream (stdout).
+.PP
+The format string is composed of zero or more directives, each starting with the percent character (%). The supported conversion specifiers are:
+.TP
+.B %c
+Print a single character.
+.TP
+.B %s
+Print a string.
+.TP
+.B %d
+Print an integer.
+.TP
+.B %i
+Print an integer.
+.TP
+.B %%
+Print a percent character.
+.PP
+Note that this implementation does not handle flag characters, field width, precision, or length modifiers.
+.SH RETURN VALUE
+The
+.B _printf
+function returns the number of characters printed (excluding the null byte used to end output to strings).
+.SH EXAMPLES
+To print a percent character:
+.B _printf("Percent:[%%]\n");
+.PP
+To print a character:
+.B _printf("Character: [%c]\n", 'A');
+.PP
+To print a string:
+.B _printf("String: [%s]\n", "Hello, World!");
+.PP
+To print an integer:
+.B _printf("Integer: [%d]\n", 42);
+.PP
+.SH SEE ALSO
+.BR printf (3)
+.SH AUTHOR
+This manual page was written by Yashar Heydarov && Tuncay Isgenderli
