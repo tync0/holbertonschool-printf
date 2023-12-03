@@ -1,0 +1,26 @@
+#!/bin/bash
+.TH _PRINTF 1 "November 2023" "Version 1.0" "User Commands"
+
+.SH NAME
+_printf \- format and print data
+
+.SH SYNOPSIS
+.B _printf
+[\fIFORMAT\fR] \fIARGUMENTS\fR
+
+.SH DESCRIPTION
+The \fI_printf\fR function formats and prints data to the standard output according to the specified \fIFORMAT\fR.
+
+.SH OPTIONS
+.TP
+.B \-h, \-\-help
+Display help message.
+
+.SH EXAMPLES
+Display a usage example here.
+
+.SH AUTHOR
+Your Name <your.email@example.com>
+
+.SH SEE ALSO
+Any related commands or documentation.
